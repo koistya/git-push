@@ -1,0 +1,35 @@
+{
+  "name": "git-push",
+  "description": "Use git-push to deploy your website to Azure, Heroku, GitHub Pages or any another hosting provider supporting Git-based deployments.",
+  "version": "0.1.1",
+  "homepage": "http://github.com/koistya/git-push",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/koistya/git-push.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koistya/git-push/issues"
+  },
+  "author": "Konstantin Tarkus (@koistya)",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://github.com/koistya/git-push/raw/master/LICENSE.txt"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "push",
+    "deploy",
+    "deployment",
+    "publish",
+    "heroku",
+    "azure",
+    "github",
+    "gh-pages",
+    "website"
+  ],
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.12.0"
+  }
+}

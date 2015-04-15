@@ -1,0 +1,9 @@
+*.tgz
+.idea
+.editorconfig
+.eslintrc
+.gitattributes
+.npmignore
+.travis.yml
+test
+test.js
