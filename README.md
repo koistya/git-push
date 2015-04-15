@@ -18,7 +18,7 @@ npm install git-push --save-dev
 ```js
 // deploy.js
 
-var push = require('get-push');
+var push = require('git-push');
 
 push('./app', 'http://github.com/example/example.github.io', function() {
   console.log('Done!');
@@ -36,7 +36,7 @@ $ node deploy.js
 
 var gulp = require('gulp');
 var del = require('del');
-var push = require('get-push');
+var push = require('git-push');
 var argv = require('minimist')(process.argv.slice(2));
 
 gulp.task('clean', del.bind(null, ['build/*', '!build/.git'], {dot: true}));
