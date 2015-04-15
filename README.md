@@ -35,10 +35,13 @@ $ node deploy.js
 // gulpfile.js
 
 var gulp = require('gulp');
+var del = require('del');
 var push = require('get-push');
 var argv = require('minimist')(process.argv.slice(2));
 
-gulp.task('build', function() {
+gulp.task('clean', del.bind(null, ['build/*', '!build/.git'], {dot: true}));
+
+gulp.task('build', ['clean'], function() {
   // TODO: Build website from source files into the `./build` folder
 });
 
