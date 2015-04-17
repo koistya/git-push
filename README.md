@@ -1,4 +1,4 @@
-# git-push [![Tips](http://img.shields.io/gratipay/koistya.svg?style=flat)](https://gratipay.com/koistya)
+# git-push [![Discussion](https://img.shields.io/badge/Discussion-online-green.svg?style=flat)](https://github.com/koistya/git-push/issues/2) [![Tips](http://img.shields.io/gratipay/koistya.svg?style=flat)](https://gratipay.com/koistya)
 
 > Use [git-push](https://github.com/koistya/git-push) to deploy your website to
 > [Azure](http://azure.microsoft.com/services/app-service/web/), [Heroku](https://www.heroku.com/),
