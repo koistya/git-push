@@ -1,4 +1,11 @@
-# git-push [![Discussion](https://img.shields.io/badge/Discussion-online-green.svg?style=flat)](https://github.com/koistya/git-push/issues/2) [![Tips](http://img.shields.io/gratipay/koistya.svg?style=flat)](https://gratipay.com/koistya)
+# git-push
+
+[![NPM version](http://img.shields.io/npm/v/git-push.svg?style=flat-square)](https://www.npmjs.com/package/git-push)
+[![NPM downloads](http://img.shields.io/npm/dm/git-push.svg?style=flat-square)](https://www.npmjs.com/package/git-push)
+[![Build Status](http://img.shields.io/travis/koistya/git-push/master.svg?style=flat-square)](https://travis-ci.org/koistya/git-push)
+[![Dependency Status](http://img.shields.io/david/koistya/git-push.svg?style=flat-square)](https://david-dm.org/koistya/git-push)
+[![Tips](http://img.shields.io/gratipay/koistya.svg?style=flat-square)](https://gratipay.com/koistya)
+[![Discussion](http://img.shields.io/badge/discussion-join!-blue.svg?style=flat-square)](https://github.com/koistya/git-push/issues/2)
 
 > Use [git-push](https://github.com/koistya/git-push) to deploy your website to
 > [Azure](http://azure.microsoft.com/services/app-service/web/), [Heroku](https://www.heroku.com/),
@@ -6,8 +13,6 @@
 > supporting Git-based deployments.
 
 ## Install
-
-[![NPM](https://nodei.co/npm/git-push.png?compact=true)](https://www.npmjs.org/package/git-push)
 
 ```sh
 npm install git-push --save-dev
