@@ -77,4 +77,4 @@ $ gulp deploy --production
 
 ## License
 
-The MIT License (MIT) © Konstantin Tarkus ([@koistya](https://twitter.com/koistya))
+The MIT License © Konstantin Tarkus ([@koistya](https://twitter.com/koistya))
