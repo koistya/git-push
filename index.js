@@ -92,7 +92,7 @@ function push(sourceDir, remote, cb) {
                 .on('exit', function() {
                   spawn('git', ['commit', '-m', message], options)
                     .on('exit', function() {
-                      spawn('git', ['push', remote.name, 'master'], options)
+                      spawn('git', ['push', remote.name, 'master:' + remote.branch], options)
                         .on('exit', function() {
                           cb();
                         });
@@ -180,7 +180,7 @@ function push(sourceDir, remote, cb) {
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Pushing to ' + remote.url);
-        spawn('git', ['push', remote.name, 'master'], options)
+        spawn('git', ['push', remote.name, 'master:' + remote.branch], options)
           .on('exit', function(code) {
             if (code === 0) {
               cb();
