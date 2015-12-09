@@ -28,7 +28,7 @@ function push(sourceDir, remote, cb) {
   cb = cb || function() {};
 
   var options = {cwd: sourceDir, stdio: 'inherit'};
-  var message = 'Update ' + new Date().toISOString();
+  var message = remote.message || 'Update ' + new Date().toISOString();
 
   // Start with an empty promise
   Promise.resolve()
