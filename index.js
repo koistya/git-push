@@ -29,6 +29,7 @@ function push(sourceDir, remote, cb) {
 
   var options = {cwd: sourceDir, stdio: 'inherit'};
   var message = remote.message || 'Update ' + new Date().toISOString();
+  var tag = remote.tag;  
 
   // Start with an empty promise
   Promise.resolve()
@@ -175,12 +176,38 @@ function push(sourceDir, remote, cb) {
     })
 
     //
+    // Create tag
+    // -------------------------------------------------------------------------
+    .then(function() {
+      return new Promise(function(resolve, reject) {
+
+        if (tag)
+        {
+          console.log('Creating a new tag: ' + tag);
+          spawn('git', ['tag', tag], options)
+            .on('exit', function(code) {
+              if (code === 0) {
+                resolve();
+              } else {
+                reject();
+              }
+            });
+        }
+        // skip, no tag specified
+        else 
+        {
+          resolve();
+        }
+      });
+    })
+
+    //
     // Push to remote
     // -------------------------------------------------------------------------
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Pushing to ' + remote.url);
-        spawn('git', ['push', remote.name, 'master'], options)
+        spawn('git', ['push', remote.name, 'master', tag ? '--tags' : ''], options)
           .on('exit', function(code) {
             if (code === 0) {
               cb();
