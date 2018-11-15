@@ -113,7 +113,7 @@ function push(sourceDir, remote, cb) {
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Fetching remote repository...');
-        spawn('git', ['fetch', remote.name], options)
+        spawn('git', ['fetch', remote.name, '--depth', '1'], options)
           .on('exit', function(code) {
             if (code === 0) {
               resolve();
