@@ -1,7 +1,7 @@
 {
   "name": "git-push",
   "description": "Use git-push to deploy your website to Azure, Heroku, GitHub Pages or any another hosting provider supporting Git-based deployments.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "http://github.com/koistya/git-push",
   "repository": {
     "type": "git",
