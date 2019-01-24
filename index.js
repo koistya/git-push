@@ -207,8 +207,11 @@ function push(sourceDir, remote, cb) {
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Pushing to ' + remote.url);
-        console.log('git', 'push', remote.name, 'master', tag ? '--tags' : '');
-        spawn('git', ['push', remote.name, 'master', tag ? '--tags' : ''], options)
+  var args = ['push', remote.name, 'master'];
+  // older git versions does not like empty argument, so i add this way
+  if (tag) args.push('--tags');
+  console.log('git', args.join(' '));
+        spawn('git', args, options)
           .on('exit', function(code) {
             if (code === 0) {
               cb();
