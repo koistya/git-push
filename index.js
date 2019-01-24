@@ -207,6 +207,7 @@ function push(sourceDir, remote, cb) {
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Pushing to ' + remote.url);
+        console.log('git', 'push', remote.name, 'master', tag ? '--tags' : '');
         spawn('git', ['push', remote.name, 'master', tag ? '--tags' : ''], options)
           .on('exit', function(code) {
             if (code === 0) {
