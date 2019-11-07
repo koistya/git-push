@@ -184,13 +184,18 @@ function push(sourceDir, remote, cb) {
         if (tag)
         {
           console.log('Creating a new tag: ' + tag);
-          spawn('git', ['tag', tag], options)
+          // remove tag if exists
+          spawn('git', ['tag', '-d', tag], options)
             .on('exit', function(code) {
-              if (code === 0) {
-                resolve();
-              } else {
-                reject();
-              }
+              // reapply tag again on current commit
+              spawn('git', ['tag', tag], options)
+                .on('exit', function(code) {
+                  if (code === 0) {
+                    resolve();
+                  } else {
+                    reject();
+                  }
+                });
             });
         }
         // skip, no tag specified
