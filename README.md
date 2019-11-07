@@ -52,7 +52,7 @@ gulp.task('build', ['clean'], function() {
 
 gulp.task('deploy', function(cb) {
   var remote = argv.production ?
-    {name: 'production', url: 'http://github.com/user/example.com', branch: 'gh-pages'},
+    {name: 'production', url: 'http://github.com/user/example.com', branch: 'gh-pages', message: argv.version },
     {name: 'test', url: 'http://github.com/user/test.example.com', branch: 'gh-pages'};
   push('./build', remote, cb);
 });

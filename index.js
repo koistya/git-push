@@ -28,7 +28,8 @@ function push(sourceDir, remote, cb) {
   cb = cb || function() {};
 
   var options = {cwd: sourceDir, stdio: 'inherit'};
-  var message = 'Update ' + new Date().toISOString();
+  var message = remote.message || 'Update ' + new Date().toISOString();
+  var tag = remote.tag;  
 
   // Start with an empty promise
   Promise.resolve()
@@ -112,7 +113,7 @@ function push(sourceDir, remote, cb) {
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Fetching remote repository...');
-        spawn('git', ['fetch', remote.name], options)
+        spawn('git', ['fetch', remote.name, '--depth', '1'], options)
           .on('exit', function(code) {
             if (code === 0) {
               resolve();
@@ -175,12 +176,47 @@ function push(sourceDir, remote, cb) {
     })
 
     //
+    // Create tag
+    // -------------------------------------------------------------------------
+    .then(function() {
+      return new Promise(function(resolve, reject) {
+
+        if (tag)
+        {
+          console.log('Creating a new tag: ' + tag);
+          // remove tag if exists
+          spawn('git', ['tag', '-d', tag], options)
+            .on('exit', function(code) {
+              // reapply tag again on current commit
+              spawn('git', ['tag', tag], options)
+                .on('exit', function(code) {
+                  if (code === 0) {
+                    resolve();
+                  } else {
+                    reject();
+                  }
+                });
+            });
+        }
+        // skip, no tag specified
+        else 
+        {
+          resolve();
+        }
+      });
+    })
+
+    //
     // Push to remote
     // -------------------------------------------------------------------------
     .then(function() {
       return new Promise(function(resolve, reject) {
         console.log('Pushing to ' + remote.url);
-        spawn('git', ['push', remote.name, 'master'], options)
+  var args = ['push', remote.name, 'master'];
+  // older git versions does not like empty argument, so i add this way
+  if (tag) args.push('--tags');
+  console.log('git', args.join(' '));
+        spawn('git', args, options)
           .on('exit', function(code) {
             if (code === 0) {
               cb();
